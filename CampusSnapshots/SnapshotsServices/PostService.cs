@@ -1,4 +1,5 @@
-﻿using SnapshotsData;
+﻿using Microsoft.EntityFrameworkCore;
+using SnapshotsData;
 using SnapshotsData.Models;
 using System;
 using System.Collections.Generic;
@@ -28,12 +29,15 @@ namespace SnapshotsServices
 
         public IEnumerable<Post> GetAll()
         {
-            return context.Posts.ToList();
+            return context.Posts
+                .Include(p => p.Status);
         }
 
         public Post GetById(int id)
         {
-            return context.Posts.FirstOrDefault(post => post.Id == id);
+            return context.Posts
+                .Include(p => p.Status)
+                .FirstOrDefault(post => post.Id == id);
         }
 
         #endregion
