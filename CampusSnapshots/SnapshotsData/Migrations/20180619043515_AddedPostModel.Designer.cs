@@ -10,8 +10,8 @@ using SnapshotsData;
 namespace SnapshotsData.Migrations
 {
     [DbContext(typeof(SnapshotsDbContext))]
-    [Migration("20180616193308_Initial Migration")]
-    partial class InitialMigration
+    [Migration("20180619043515_AddedPostModel")]
+    partial class AddedPostModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,27 @@ namespace SnapshotsData.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Members");
+                });
+
+            modelBuilder.Entity("SnapshotsData.Models.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("PostType");
+
+                    b.Property<string>("Title");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Posts");
                 });
 #pragma warning restore 612, 618
         }

@@ -43,7 +43,7 @@ namespace CampusSnapshots
 
             //allows MemberService to get injected into the Member controller anytime it is requesting the IMember interface
             services.AddScoped<IMember, MemberService>();
-
+            services.AddScoped<IPost, PostService>();
 
 
             //used to connect to the sql database

@@ -13,5 +13,6 @@ namespace SnapshotsData
 
         //this represents a table in the database
         public DbSet<Member> Members { get; set; }
+        public DbSet<Post> Posts { get; set; }
     }
 }
