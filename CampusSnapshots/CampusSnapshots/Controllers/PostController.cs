@@ -28,7 +28,7 @@ namespace CampusSnapshots.Controllers
         #region Methods
 
         //Display List of posts or gallery of posts
-        public IActionResult Index()
+        public IActionResult Issues()
         {
             var posts = _posts.GetAll();
 
