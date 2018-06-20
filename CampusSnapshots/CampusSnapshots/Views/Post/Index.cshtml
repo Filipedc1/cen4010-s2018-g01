@@ -1,37 +1,17 @@
 ﻿@model CampusSnapshots.ViewModels.PostIndexViewModel
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="assets">
-    <h3>Posts</h3>
-    <div id="postsTable">
-        <table class="table table-condensed" id="catalogIndexTable">
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var post in Model.Posts)
-                {
-                    <tr class="assetRow">
-                        <td class="">
-                            <a asp-controller="Post" asp-action="Detail" asp-route-id="@post.Id">
-                                <img src="@post.Url" class="imageCell" />
-                            </a>
-                        </td>
-                        <td class="">@post.Title</td>
-                        <td class="">@post.Description</td>
-                        <td class="">@post.Status.Name</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+<div class="container body-content">
+    <div class="post-content">
+        @foreach (var post in Model.Posts)
+        {
+            <div class="post-image-container">
+                <div class="post-image" style="background-image: url(@post.Url)"></div>
+            </div>
+        }
     </div>
 </div>
-
