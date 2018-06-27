@@ -1,12 +1,12 @@
-D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\obj\Debug\netcoreapp2.0\SnapshotsServices.csproj.CoreCompileInputs.cache
-D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\obj\Debug\netcoreapp2.0\SnapshotsServices.AssemblyInfoInputs.cache
-D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\obj\Debug\netcoreapp2.0\SnapshotsServices.AssemblyInfo.cs
 D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\bin\Debug\netcoreapp2.0\SnapshotsServices.deps.json
 D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\bin\Debug\netcoreapp2.0\SnapshotsServices.dll
 D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\bin\Debug\netcoreapp2.0\SnapshotsServices.pdb
 D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\bin\Debug\netcoreapp2.0\SnapshotsData.dll
 D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\bin\Debug\netcoreapp2.0\SnapshotsData.pdb
 D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\obj\Debug\netcoreapp2.0\SnapshotsServices.csprojAssemblyReference.cache
+D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\obj\Debug\netcoreapp2.0\SnapshotsServices.csproj.CoreCompileInputs.cache
+D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\obj\Debug\netcoreapp2.0\SnapshotsServices.AssemblyInfoInputs.cache
+D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\obj\Debug\netcoreapp2.0\SnapshotsServices.AssemblyInfo.cs
 D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\obj\Debug\netcoreapp2.0\SnapshotsServices.csproj.CopyComplete
 D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\obj\Debug\netcoreapp2.0\SnapshotsServices.dll
 D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\obj\Debug\netcoreapp2.0\SnapshotsServices.pdb

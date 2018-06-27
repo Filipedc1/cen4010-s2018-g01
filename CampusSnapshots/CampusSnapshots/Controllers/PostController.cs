@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CampusSnapshots.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using SnapshotsData;
+using SnapshotsData.Models;
 
 namespace CampusSnapshots.Controllers
 {
@@ -30,7 +31,7 @@ namespace CampusSnapshots.Controllers
         //Display List of posts or gallery of posts
         public IActionResult Issues()
         {
-            var posts = _posts.GetAll();
+            var posts = _posts.GetAll().Where(p => p.PostType == PostType.Issue);
 
             var viewModel = new PostIndexViewModel()
             {
@@ -57,6 +58,78 @@ namespace CampusSnapshots.Controllers
             };
 
             return View(viewModel);
+        }
+
+        public IActionResult NewPost()
+        {
+            var formVM = new PostFormViewModel();
+
+            return View("PostForm", formVM);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            if (_posts.DeletePost(id))
+            {
+                return RedirectToAction("Issues");
+            }
+
+            return BadRequest();
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var post = _posts.GetById(id);
+
+            if (post == null)
+            {
+                return BadRequest();
+            }
+
+            var vM = new PostFormViewModel
+            {
+                Id = post.Id,
+                FormType = FormType.Edit,
+                Title = post.Title,
+                Description = post.Description,
+                DateCreated = post.DateCreated,
+                Url = post.Url,
+                PostType = post.PostType,
+                Status = post.Status
+            };
+
+
+            return View("PostForm", vM);
+        }
+
+        [HttpPost]
+        public IActionResult SaveForm(Post post) 
+        {
+            //if not valid, return the user the New Post page
+            if (!ModelState.IsValid)
+            {
+                var vM = new PostFormViewModel();
+
+                return View("PostForm", vM);
+            }
+
+            //if true, then it's a new post
+            if (post.Id == 0)
+            {
+                if (_posts.AddNewPost(post))
+                {
+                    return RedirectToAction("Issues");
+                }
+            }
+            else 
+            {
+                if (_posts.EditPost(post))
+                {
+                    return RedirectToAction("Detail", new { post.Id });
+                }
+            }
+
+            return BadRequest();
         }
 
         #endregion
