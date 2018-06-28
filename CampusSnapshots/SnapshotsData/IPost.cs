@@ -11,5 +11,13 @@ namespace SnapshotsData
         IEnumerable<Post> GetAll();
 
         Post GetById(int id);
+
+        bool AddNewPost(Post post);
+
+        bool DeletePost(int id);
+
+        bool EditPost(Post id);
+
+        Status SetStatusForNewPosts();
     }
 }

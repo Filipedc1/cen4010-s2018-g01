@@ -1,8 +1,112 @@
-﻿
-@{
-    ViewData["Title"] = "Detail";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@model CampusSnapshots.ViewModels.PostDetailViewModel
 
-<h2>Detail</h2>
+<div class="container">
+    <div class="page-header clearfix detailHeading">
+        <h2 class="text-muted">Details</h2>
+    </div>
+</div>
+
+<!--Details-->
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <img class="detailImage" src="@Model.ImageUrl" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <p id="postTitle">@Model.Title</p>
+            <p id="postDesc">@Model.Description</p>
+        </div>
+        <div class="col-md-4 detailInfo">
+            <table>
+                <tr>
+                    <td class="postLabel">Status: </td>
+                    <td class="postValue">@Model.Status.Name</td>
+                </tr>
+                <tr>
+                    <td class="postLabel">Type: </td>
+                    <td class="postValue">@Model.EventOrIssue</td>
+                </tr>
+                <tr>
+                    <td class="postLabel">Created: </td>
+                    <td class="postValue">@Model.DateCreated.ToShortDateString()</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="">
+        <a class="btn btn-md btn-danger" role="button" asp-controller="Post" asp-action="Delete" asp-route-id="@Model.PostId">Delete Post</a>
+        <a class="btn btn-md btn-info" role="button" asp-controller="Post" asp-action="Edit" asp-route-id="@Model.PostId">Edit Post</a>
+    </div>
+</div>
+
+<!--Post History Table-->
+@*<div class="row">
+        <div class="col-lg-6">
+            <h4>Checkout History</h4>
+            <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Date Id</th>
+                        <th>Date Posted</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var checkout in @Model.CheckoutHistory)
+                    {
+                        <tr>
+                            <td>@checkout.CheckedOut</td>
+                            <td>@checkout.CheckedIn</td>
+                            <td>@checkout.LibraryCard.Id</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>*@
+
+
+
+
+
+
+<!--Styling for the page-->
+<!--styles.css for some reason does not work when trying to style this page. So I am applying styling in here.-->
+<style>
+    .detailImage {
+        width: 250px;
+        padding-bottom: 6px;
+    }
+
+    #postTitle {
+        font-size: 2.0em;
+    }
+
+    #postDesc {
+        font-size: 1.4em;
+    }
+
+    .postLabel {
+        font-weight: bold;
+    }
+
+    .postValue {
+        text-align: right;
+        padding-left: 3em;
+        font-size: 0.9em;
+        margin-left: 30px;
+    }
+
+    .detailInfo {
+        padding: 10px;
+        font-size: 1.3em;
+        color: #555;
+        padding-left: 5em;
+    }
+
+</style>
 
