@@ -15,5 +15,7 @@ namespace CampusSnapshots.ViewModels
         public string ImageUrl         { get; set; }
         public PostType EventOrIssue   { get; set; }
         public Status Status           { get; set; }
+        //public Comment Comment         { get; set; } //temporary. Replace this with:
+        public IEnumerable<Comment> Comments { get; set; } //new
     }
 }
