@@ -10,7 +10,6 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-/SnapshotsData/Models/Comment.cs
 
 
 # Build results
