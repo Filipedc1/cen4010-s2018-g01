@@ -1,8 +1,15 @@
 ﻿@model CampusSnapshots.ViewModels.PostDetailViewModel
 
+
 <div class="container">
     <div class="page-header clearfix detailHeading">
-        <h2 class="text-muted">Details</h2>
+        <h2 class="text-muted">
+            Details
+            <span>
+                <a id="delete-post" class="btn btn-md btn-danger pull-right" role="button" asp-controller="Post" asp-action="Delete" asp-route-id="@Model.PostId">Delete Post</a>
+                <a id="edit-post" class="btn btn-md btn-info pull-right" role="button" asp-controller="Post" asp-action="Edit" asp-route-id="@Model.PostId">Edit Post</a>
+            </span>
+        </h2>
     </div>
 </div>
 
@@ -11,7 +18,7 @@
     <div class="row">
         <div class="col-md-4">
             <div>
-                <img class="detailImage" src="@Model.ImageUrl" />
+                <img class="img-thumbnail detailImage" src="@Model.ImageUrl" />
             </div>
         </div>
         <div class="col-md-4">
@@ -37,12 +44,57 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="">
-        <a class="btn btn-md btn-danger" role="button" asp-controller="Post" asp-action="Delete" asp-route-id="@Model.PostId">Delete Post</a>
-        <a class="btn btn-md btn-info" role="button" asp-controller="Post" asp-action="Edit" asp-route-id="@Model.PostId">Edit Post</a>
+<!--Comments-->
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse1">
+                    Comments
+
+                    @if (Model.Comments == null)
+                    {
+                        <span class="badge pull-right">0</span>
+                    }
+                    else
+                    {
+                        <span class="badge pull-right">@Model.Comments.Count()</span>
+                    }
+                </a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+            @if (Model.Comments != null && Model.Comments.Count() != 0)
+            {
+                @foreach (var comment in Model.Comments)
+                {
+                    <div class="panel-body">
+                        @comment.Content
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="panel-body">
+                    No Comments
+                </div>
+            }
+        </div>
     </div>
+
 </div>
+
+<!--Add comment-->
+<div class="form-group" id="add-comment">
+    <form asp-controller="Post" asp-action="AddComment">
+        <label asp-for="Comment" class="control-label"></label>
+        <textarea asp-for="Comment.Content" class="form-control" placeholder="Add comment..."></textarea>
+        <button type="submit" class="btn btn-primary">Add comment</button>
+        @Html.HiddenFor(p => p.PostId)
+    </form>
+</div>
+
+
 
 
 <!--Styling for the page-->
@@ -79,5 +131,8 @@
         padding-left: 5em;
     }
 
+    #edit-post {
+        margin-right: 0.4em;
+    }
 </style>
 

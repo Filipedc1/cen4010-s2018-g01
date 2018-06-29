@@ -97,6 +97,33 @@ namespace SnapshotsServices
             return false;
         }
 
+        public bool AddNewComment(int postId, Comment comment)
+        {
+            if (comment == null)
+                return false;
+
+            var postInDB = GetById(postId);
+            if (postInDB != null)
+            {
+                comment.Post = postInDB;
+                comment.SendTime = DateTime.Now;
+
+                context.Comment.Add(comment);
+                context.SaveChanges();
+                return true;
+            }
+
+            return false;
+        }
+
+        public IEnumerable<Comment> GetAllCommentsByPostId(int postId)
+        {
+            return context.Comment
+                .Include(p => p.Post)
+                .Where(c => c.Post.Id == postId)
+                .ToList();
+        }
+
         #endregion
     }
 }

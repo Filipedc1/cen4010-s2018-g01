@@ -8,12 +8,13 @@ namespace SnapshotsData.Models
 
     public class Post
     {
-        public int Id                { get; set; }
-        public string Title          { get; set; } 
-        public string Description    { get; set; }
-        public DateTime DateCreated  { get; set; }
-        public string Url            { get; set; }
-        public Status Status         { get; set; } 
-        public PostType PostType     { get; set; }
+        public int Id                           { get; set; }
+        public string Title                     { get; set; } 
+        public string Description               { get; set; }
+        public DateTime DateCreated             { get; set; }
+        public string Url                       { get; set; }
+        public Status Status                    { get; set; } 
+        public PostType PostType                { get; set; }
+        public IEnumerable<Comment> Comments    { get; set; }
     }
 }
