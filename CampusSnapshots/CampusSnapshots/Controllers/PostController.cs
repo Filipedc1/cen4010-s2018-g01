@@ -55,7 +55,8 @@ namespace CampusSnapshots.Controllers
                 ImageUrl = post.Url,
                 EventOrIssue = post.PostType,
                 Status = post.Status,
-                Comments = post.Comments?.Where(p => p.Post.Id == id)
+                Comments = _posts.GetAllCommentsByPostId(post.Id)
+                //Comments = post.Comments?.Where(p => p.Post.Id == id)
             };
 
             return View(viewModel);
@@ -128,6 +129,23 @@ namespace CampusSnapshots.Controllers
                 {
                     return RedirectToAction("Detail", new { post.Id });
                 }
+            }
+
+            return BadRequest();
+        }
+
+        //if this doesnt work, just add a second argument to Details with type PostDetailViewModel!
+        [HttpPost]
+        public IActionResult AddComment(PostDetailViewModel vm)
+        {
+            if (!ModelState.IsValid || vm.Comment == null)
+            {
+                return BadRequest();
+            }
+
+            if (_posts.AddNewComment(vm.PostId, vm.Comment))
+            {
+                return RedirectToAction("Detail", "Post" , new { @id = vm.PostId });
             }
 
             return BadRequest();

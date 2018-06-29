@@ -69,6 +69,7 @@
                 @foreach (var comment in Model.Comments)
                 {
                     <div class="panel-body">
+                        @comment.Content
                     </div>
                 }
             }
@@ -85,10 +86,11 @@
 
 <!--Add comment-->
 <div class="form-group" id="add-comment">
-    <form asp-controller="Post" asp-action="Detail">
-        <label asp-for="Comments" class="control-label"></label>
-        <textarea asp-for="Comments" class="form-control" placeholder="Add comment..."></textarea>
+    <form asp-controller="Post" asp-action="AddComment">
+        <label asp-for="Comment" class="control-label"></label>
+        <textarea asp-for="Comment.Content" class="form-control" placeholder="Add comment..."></textarea>
         <button type="submit" class="btn btn-primary">Add comment</button>
+        @Html.HiddenFor(p => p.PostId)
     </form>
 </div>
 

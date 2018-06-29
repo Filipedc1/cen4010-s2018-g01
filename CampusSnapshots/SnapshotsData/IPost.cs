@@ -19,5 +19,9 @@ namespace SnapshotsData
         bool EditPost(Post id);
 
         Status SetStatusForNewPosts();
+
+        bool AddNewComment(int postId, Comment comment);
+
+        IEnumerable<Comment> GetAllCommentsByPostId(int id);
     }
 }
