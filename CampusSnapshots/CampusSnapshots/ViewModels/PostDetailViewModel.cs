@@ -8,14 +8,13 @@ namespace CampusSnapshots.ViewModels
 {
     public class PostDetailViewModel
     {
-        public int PostId              { get; set; }
-        public string Title            { get; set; }
-        public string Description      { get; set; }
-        public DateTime DateCreated    { get; set; }
-        public string ImageUrl         { get; set; }
-        public PostType EventOrIssue   { get; set; }
-        public Status Status           { get; set; }
-        //public Comment Comment         { get; set; } //temporary. Replace this with:
-        public IEnumerable<Comment> Comments { get; set; } //new
+        public int PostId                       { get; set; }
+        public string Title                     { get; set; }
+        public string Description               { get; set; }
+        public DateTime DateCreated             { get; set; }
+        public string ImageUrl                  { get; set; }
+        public PostType EventOrIssue            { get; set; }
+        public Status Status                    { get; set; }
+        public IEnumerable<Comment> Comments    { get; set; } 
     }
 }
