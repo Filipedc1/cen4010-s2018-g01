@@ -54,7 +54,8 @@ namespace CampusSnapshots.Controllers
                 DateCreated = post.DateCreated,
                 ImageUrl = post.Url,
                 EventOrIssue = post.PostType,
-                Status = post.Status
+                Status = post.Status,
+                Comments = post.Comments?.Where(p => p.Post.Id == id)
             };
 
             return View(viewModel);
