@@ -97,6 +97,10 @@ namespace SnapshotsServices
             return false;
         }
 
+        #endregion
+
+        #region Comment Helper Methods
+
         public bool AddNewComment(int postId, Comment comment)
         {
             if (comment == null)
@@ -116,12 +120,30 @@ namespace SnapshotsServices
             return false;
         }
 
+        public bool DeleteComment(int id)
+        {
+            var comment = GetCommentById(id);
+            if (comment != null)
+            {
+                context.Comment.Remove(comment);
+                context.SaveChanges();
+                return true;
+            }
+
+            return false;
+        }
+
         public IEnumerable<Comment> GetAllCommentsByPostId(int postId)
         {
             return context.Comment
                 .Include(p => p.Post)
                 .Where(c => c.Post.Id == postId)
                 .ToList();
+        }
+
+        public Comment GetCommentById(int id)
+        {
+            return context.Comment.FirstOrDefault(c => c.Id == id);
         }
 
         #endregion

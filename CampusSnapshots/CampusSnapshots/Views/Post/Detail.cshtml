@@ -47,7 +47,7 @@
 <!--Comments-->
 <div class="panel-group" id="accordion">
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" id="heading">
             <h4 class="panel-title">
                 <a data-toggle="collapse" href="#collapse1">
                     Comments
@@ -70,6 +70,9 @@
                 {
                     <div class="panel-body">
                         @comment.Content
+                        <i>
+                            <a id="delete-comment" class="far fa-trash-alt pull-right" role="button" asp-controller="Post" asp-action="DeleteComment" asp-route-id="@comment.Id"></a>
+                        </i>
                     </div>
                 }
             }
@@ -133,6 +136,24 @@
 
     #edit-post {
         margin-right: 0.4em;
+    }
+
+    #delete-comment {
+        color: red;
+    }
+
+    .panel-title {
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        margin-top: 0.3em;
+    }
+
+
+    #collapse1 {
+        color: #336699;
+        font-family: Arial, Helvetica, sans-serif;
     }
 </style>
 

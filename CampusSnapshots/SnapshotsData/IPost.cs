@@ -23,5 +23,9 @@ namespace SnapshotsData
         bool AddNewComment(int postId, Comment comment);
 
         IEnumerable<Comment> GetAllCommentsByPostId(int id);
+
+        Comment GetCommentById(int id);
+
+        bool DeleteComment(int id);
     }
 }
