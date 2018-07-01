@@ -26,7 +26,7 @@ namespace CampusSnapshots.Controllers
 
         #endregion
         
-        #region Methods
+        #region Post Methods
 
         //Display List of posts or gallery of posts
         public IActionResult Issues()
@@ -134,6 +134,10 @@ namespace CampusSnapshots.Controllers
             return BadRequest();
         }
 
+        #endregion
+
+        #region Comment Methods
+
         //if this doesnt work, just add a second argument to Details with type PostDetailViewModel!
         [HttpPost]
         public IActionResult AddComment(PostDetailViewModel vm)
@@ -145,7 +149,19 @@ namespace CampusSnapshots.Controllers
 
             if (_posts.AddNewComment(vm.PostId, vm.Comment))
             {
-                return RedirectToAction("Detail", "Post" , new { @id = vm.PostId });
+                return RedirectToAction("Detail", "Post", new { @id = vm.PostId });
+            }
+
+            return BadRequest();
+        }
+
+        //need to update later to redirect to current detail page. 
+        //Will need a Post Model passed in as an argument
+        public IActionResult DeleteComment(int id)
+        {
+            if (_posts.DeleteComment(id))
+            {
+                return RedirectToAction("Issues");
             }
 
             return BadRequest();
