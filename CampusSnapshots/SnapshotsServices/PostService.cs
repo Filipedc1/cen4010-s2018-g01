@@ -65,13 +65,16 @@ namespace SnapshotsServices
 
         public bool DeletePost(int id)
         {
-            var post = context.Posts.FirstOrDefault(p => p.Id == id);
+            var post = GetById(id);
+
+            //need to remove all comments for a post before deleting the post from the database
+            var commentsForPost = GetAllCommentsByPostId(id); 
 
             if (post != null)
             {
-                context.Remove(post);
+                context.Comment.RemoveRange(commentsForPost);
+                context.Posts.Remove(post);
                 context.SaveChanges();
-
                 return true;
             }
 
@@ -120,9 +123,8 @@ namespace SnapshotsServices
             return false;
         }
 
-        public bool DeleteComment(int id)
+        public bool DeleteComment(Comment comment)
         {
-            var comment = GetCommentById(id);
             if (comment != null)
             {
                 context.Comment.Remove(comment);
@@ -143,7 +145,9 @@ namespace SnapshotsServices
 
         public Comment GetCommentById(int id)
         {
-            return context.Comment.FirstOrDefault(c => c.Id == id);
+            return context.Comment
+                .Include(c => c.Post)
+                .FirstOrDefault(c => c.Id == id);
         }
 
         #endregion
