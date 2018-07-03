@@ -9,5 +9,6 @@ namespace CampusSnapshots.ViewModels
     public class PostIndexViewModel
     {
         public IEnumerable<Post> Posts { get; set; }
+        public string PageTitle { get; set; }
     }
 }

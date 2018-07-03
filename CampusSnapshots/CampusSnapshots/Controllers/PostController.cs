@@ -35,7 +35,8 @@ namespace CampusSnapshots.Controllers
 
             var viewModel = new PostIndexViewModel()
             {
-                Posts = posts
+                Posts = posts,
+                PageTitle = "Issues"
             };
 
             return View(viewModel);
@@ -45,12 +46,12 @@ namespace CampusSnapshots.Controllers
         {
             var posts = _posts.GetAll().Where(post => post.PostType == PostType.Event);
 
-            PostIndexViewModel view = new PostIndexViewModel();
+            var view = new PostIndexViewModel();
             view.Posts = posts;
+            view.PageTitle = "Events";
 
             return View("Issues", view);
         }
-
 
         //Displays details about a post when selected
         public IActionResult Detail(int id)
