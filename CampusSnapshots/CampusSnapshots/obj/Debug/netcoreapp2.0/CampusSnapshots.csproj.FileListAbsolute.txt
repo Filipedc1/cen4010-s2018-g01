@@ -15,3 +15,20 @@ D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s
 D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\obj\Debug\netcoreapp2.0\CampusSnapshots.dll
 D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\obj\Debug\netcoreapp2.0\CampusSnapshots.pdb
 D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\bin\Debug\netcoreapp2.0\CampusSnapshots.deps.json
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\bin\Debug\netcoreapp2.0\CampusSnapshots.runtimeconfig.json
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\bin\Debug\netcoreapp2.0\CampusSnapshots.runtimeconfig.dev.json
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\bin\Debug\netcoreapp2.0\CampusSnapshots.dll
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\bin\Debug\netcoreapp2.0\CampusSnapshots.pdb
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\bin\Debug\netcoreapp2.0\SnapshotsData.dll
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\bin\Debug\netcoreapp2.0\SnapshotsServices.dll
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\bin\Debug\netcoreapp2.0\SnapshotsData.pdb
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\bin\Debug\netcoreapp2.0\SnapshotsServices.pdb
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\obj\Debug\netcoreapp2.0\CampusSnapshots.csprojAssemblyReference.cache
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\obj\Debug\netcoreapp2.0\CampusSnapshots.csproj.CoreCompileInputs.cache
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\obj\Debug\netcoreapp2.0\CampusSnapshots.AssemblyInfoInputs.cache
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\obj\Debug\netcoreapp2.0\CampusSnapshots.AssemblyInfo.cs
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\obj\Debug\netcoreapp2.0\CampusSnapshots.csproj.CopyComplete
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\obj\Debug\netcoreapp2.0\CampusSnapshots.dll
+C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\CampusSnapshots\obj\Debug\netcoreapp2.0\CampusSnapshots.pdb
