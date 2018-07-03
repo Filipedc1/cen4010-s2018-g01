@@ -26,6 +26,6 @@ namespace SnapshotsData
 
         Comment GetCommentById(int id);
 
-        bool DeleteComment(int id);
+        bool DeleteComment(Comment comment);
     }
 }

@@ -150,7 +150,6 @@ namespace CampusSnapshots.Controllers
 
         #region Comment Methods
 
-        //if this doesnt work, just add a second argument to Details with type PostDetailViewModel!
         [HttpPost]
         public IActionResult AddComment(PostDetailViewModel vm)
         {
@@ -171,9 +170,12 @@ namespace CampusSnapshots.Controllers
         //Will need a Post Model passed in as an argument
         public IActionResult DeleteComment(int id)
         {
-            if (_posts.DeleteComment(id))
+            var comment = _posts.GetCommentById(id);
+            var post = _posts.GetById(comment.Post.Id);
+
+            if (_posts.DeleteComment(comment))
             {
-                return RedirectToAction("Issues");
+                return RedirectToAction("Detail", new { post.Id });
             }
 
             return BadRequest();
