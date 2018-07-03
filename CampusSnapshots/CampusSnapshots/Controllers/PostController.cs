@@ -41,11 +41,22 @@ namespace CampusSnapshots.Controllers
             return View(viewModel);
         }
 
+        public IActionResult Events()
+        {
+            var posts = _posts.GetAll().Where(post => post.PostType == PostType.Event);
+
+            PostIndexViewModel view = new PostIndexViewModel();
+            view.Posts = posts;
+
+            return View("Issues", view);
+        }
+
+
         //Displays details about a post when selected
         public IActionResult Detail(int id)
         {
             var post = _posts.GetById(id);
-           
+
             var viewModel = new PostDetailViewModel()
             {
                 PostId = post.Id,

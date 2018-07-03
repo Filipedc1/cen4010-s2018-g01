@@ -1,5 +1,6 @@
 ﻿@model CampusSnapshots.ViewModels.PostIndexViewModel
 
+
 <div class="container">
     <div class="page-header clearfix detailHeading">
         <h2 class="text-muted pull-left">
@@ -13,11 +14,13 @@
     <div class="post-content">
         @foreach (var post in Model.Posts)
         {
-            <div class="post-image-container">
-                <a asp-controller="Post" asp-action="Detail" asp-route-id="@post.Id">
-                    <div class="post-image" style="background-image: url(@post.Url)"></div>
-                </a>
-            </div>
+        <div class="post-image-container">
+            <a asp-controller="Post" asp-action="Detail" asp-route-id="@post.Id">
+                <div class="post-image" style="background-image: url(@post.Url)"></div>
+            </a>
+        </div>
         }
     </div>
 </div>
+
+
