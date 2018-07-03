@@ -166,8 +166,6 @@ namespace CampusSnapshots.Controllers
             return BadRequest();
         }
 
-        //need to update later to redirect to current detail page. 
-        //Will need a Post Model passed in as an argument
         public IActionResult DeleteComment(int id)
         {
             var comment = _posts.GetCommentById(id);
