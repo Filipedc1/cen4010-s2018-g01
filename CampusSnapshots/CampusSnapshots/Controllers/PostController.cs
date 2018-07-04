@@ -83,9 +83,18 @@ namespace CampusSnapshots.Controllers
 
         public IActionResult Delete(int id)
         {
-            if (_posts.DeletePost(id))
+            var post = _posts.GetById(id);
+
+            if (_posts.DeletePost(post))
             {
-                return RedirectToAction("Issues");
+                if (post.PostType == PostType.Issue)
+                {
+                    return RedirectToAction("Issues");
+                }
+                else
+                {
+                    return RedirectToAction("Events");
+                }
             }
 
             return BadRequest();

@@ -63,22 +63,23 @@ namespace SnapshotsServices
             return context.Status.FirstOrDefault(x => x.Id == 1);
         }
 
-        public bool DeletePost(int id)
+        public bool DeletePost(Post post)
         {
-            var post = GetById(id);
-
-            //need to remove all comments for a post before deleting the post from the database
-            var commentsForPost = GetAllCommentsByPostId(id); 
-
-            if (post != null)
+            if (post == null)
             {
-                context.Comment.RemoveRange(commentsForPost);
-                context.Posts.Remove(post);
-                context.SaveChanges();
-                return true;
+                return false;
             }
 
-            return false;
+            //need to remove all comments for a post before deleting the post from the database
+            var commentsForPost = GetAllCommentsByPostId(post.Id); 
+            if (commentsForPost != null && commentsForPost.Count() > 0)
+            {
+                context.Comment.RemoveRange(commentsForPost);
+            }
+
+            context.Posts.Remove(post);
+            context.SaveChanges();
+            return true;
         }
 
         public bool EditPost(Post post)
@@ -125,14 +126,12 @@ namespace SnapshotsServices
 
         public bool DeleteComment(Comment comment)
         {
-            if (comment != null)
-            {
-                context.Comment.Remove(comment);
-                context.SaveChanges();
-                return true;
-            }
+            if (comment == null)
+                return false;
 
-            return false;
+            context.Comment.Remove(comment);
+            context.SaveChanges();
+            return true;
         }
 
         public IEnumerable<Comment> GetAllCommentsByPostId(int postId)

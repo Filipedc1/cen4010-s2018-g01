@@ -14,7 +14,7 @@ namespace SnapshotsData
 
         bool AddNewPost(Post post);
 
-        bool DeletePost(int id);
+        bool DeletePost(Post post);
 
         bool EditPost(Post id);
 
