@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CampusSnapshots.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SnapshotsData;
 using SnapshotsData.Models;
+using System.IO;
 
 namespace CampusSnapshots.Controllers
 {
@@ -13,15 +17,17 @@ namespace CampusSnapshots.Controllers
     {
         #region Fields
 
+        private readonly IHostingEnvironment _hosting;
         private readonly IPost _posts;
 
         #endregion
 
         #region Constructor
 
-        public PostController(IPost post)
+        public PostController(IPost post, IHostingEnvironment he)
         {
             this._posts = post;
+            this._hosting = he;
         }
 
         #endregion
@@ -100,6 +106,16 @@ namespace CampusSnapshots.Controllers
             return BadRequest();
         }
 
+        //not working yet
+        public void DeleteImageFromHostingEnvironment(string url)
+        {
+            var filename = Path.GetFileName(url);
+            string t = _hosting.WebRootPath + "\\images";
+            var files = Directory.GetFiles(t);
+            var file = files.Where(f => Path.GetFileName(f) == filename).Single();
+            System.IO.File.Delete(file);
+        }
+
         public IActionResult Edit(int id)
         {
             var post = _posts.GetById(id);
@@ -126,7 +142,7 @@ namespace CampusSnapshots.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveForm(Post post) 
+        public IActionResult SaveForm(Post post, IFormFile pic) 
         {
             //if not valid, return the user the New Post page
             if (!ModelState.IsValid)
@@ -139,9 +155,18 @@ namespace CampusSnapshots.Controllers
             //if true, then it's a new post
             if (post.Id == 0)
             {
+                string filename = string.Empty;
+
+                //upload image if not null
+                if (pic != null)
+                {
+                    filename = UploadImage(pic);
+                    post.Url = "/images/" + Path.GetFileName(pic.FileName);
+                }
+
                 if (_posts.AddNewPost(post))
                 {
-                    return RedirectToAction("Issues");
+                    return (post.PostType == PostType.Issue) ? RedirectToAction("Issues") : RedirectToAction("Events");
                 }
             }
             else 
@@ -186,6 +211,19 @@ namespace CampusSnapshots.Controllers
             }
 
             return BadRequest();
+        }
+
+        #endregion
+
+        #region Image methods
+
+        //will need to change when dealing with Azure
+        public string UploadImage(IFormFile img)
+        {
+            var filePath = Path.Combine(_hosting.WebRootPath + "\\images", Path.GetFileName(img.FileName));
+            img.CopyTo(new FileStream(filePath, FileMode.Create));
+
+            return filePath;
         }
 
         #endregion
