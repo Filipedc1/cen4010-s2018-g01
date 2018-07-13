@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using CampusSnapshots.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SnapshotsData;
 using SnapshotsData.Models;
-using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CampusSnapshots.Controllers
 {
+    [Authorize]
     public class PostController : Controller
     {
         #region Fields
