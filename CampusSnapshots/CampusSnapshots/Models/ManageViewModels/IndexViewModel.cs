@@ -22,6 +22,8 @@ namespace CampusSnapshots.Models.ManageViewModels
             }
         }
 
+        public DateTime DateJoined { get; set; }
+
         public bool IsEmailConfirmed { get; set; }
 
         [Required]

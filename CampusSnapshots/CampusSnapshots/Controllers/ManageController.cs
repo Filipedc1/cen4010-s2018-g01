@@ -63,7 +63,8 @@ namespace CampusSnapshots.Controllers
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
-                StatusMessage = StatusMessage
+                StatusMessage = StatusMessage,
+                DateJoined = user.DateJoined
             };
 
             return View(model);
