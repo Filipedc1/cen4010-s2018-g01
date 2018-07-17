@@ -15,5 +15,8 @@ namespace CampusSnapshots.Models
 
         [Required]
         public string LastName { get; set; }
+
+        [Required]
+        public DateTime DateJoined { get; set; }
     }
 }

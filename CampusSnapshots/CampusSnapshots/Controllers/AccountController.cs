@@ -228,7 +228,8 @@ namespace CampusSnapshots.Controllers
                     LastName = model.LastName,
                     PhoneNumber = model.PhoneNumber,
                     UserName = model.Email,
-                    Email = model.Email
+                    Email = model.Email,
+                    DateJoined = DateTime.Now
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
