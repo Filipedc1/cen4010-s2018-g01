@@ -10,6 +10,18 @@ namespace CampusSnapshots.Models.ManageViewModels
     {
         public string Username { get; set; }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName; 
+            }
+        }
+
         public bool IsEmailConfirmed { get; set; }
 
         [Required]
