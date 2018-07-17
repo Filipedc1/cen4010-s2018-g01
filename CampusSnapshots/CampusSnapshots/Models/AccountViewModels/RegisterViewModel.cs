@@ -36,5 +36,9 @@ namespace CampusSnapshots.Models.AccountViewModels
         [StringLength(12)]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Date Joined")]
+        public DateTime DateJoined { get; set; }
     }
 }
