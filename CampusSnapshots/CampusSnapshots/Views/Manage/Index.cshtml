@@ -4,9 +4,55 @@
     ViewData.AddActivePage(ManageNavPages.Index);
 }
 
-<h4>@ViewData["Title"]</h4>
+
 @Html.Partial("_StatusMessage", Model.StatusMessage)
+
+
+
 <div class="row">
+    <div class="col-md-7 ">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>User Profile</h4>
+            </div>
+            <div class="panel-body">
+                <div class="box box-info">
+                    <div class="box-body">
+                        <div class="col-sm-6">
+                            <div align="center">
+                                <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
+                                <input id="profile-image-upload" class="hidden" type="file">
+                                <div style="color:#999;">click here to change profile image</div>
+                            </div>
+                            <br>
+
+                            <!-- /input-group -->
+                        </div>
+                        <div class="col-sm-6">
+                            <h4 style="color:#00b1b1;">@Model.FullName </h4>
+                            <span> </span>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr style="margin:5px 0 5px 0;">
+                        <div class="col-sm-5 col-xs-6 tital ">First Name:</div><div class="col-sm-7 col-xs-6 ">@Model.FirstName</div>
+                        <div class="clearfix"></div>
+                        <div class="bot-border"></div>
+                        <div class="col-sm-5 col-xs-6 tital ">Last Name:</div><div class="col-sm-7"> @Model.LastName</div>
+                        <div class="clearfix"></div>
+                        <div class="bot-border"></div>
+                        <div class="col-sm-5 col-xs-6 tital ">Date Joined:</div><div class="col-sm-7">@Model.DateJoined </div>
+                        <div class="clearfix"></div>
+                        <div class="bot-border"></div>
+                        <div class="col-sm-5 col-xs-6 tital ">Phone Number:</div><div class="col-sm-7">@Model.PhoneNumber</div>
+                        <div class="clearfix"></div>
+                        <div class="bot-border"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Update email, username, or phone number section-->
     <div class="col-md-6">
         <form method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
@@ -35,7 +81,7 @@
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-default">Save</button>
+            <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
 </div>

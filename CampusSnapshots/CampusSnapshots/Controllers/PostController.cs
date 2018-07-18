@@ -10,9 +10,11 @@ using Microsoft.AspNetCore.Mvc;
 using SnapshotsData;
 using SnapshotsData.Models;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CampusSnapshots.Controllers
 {
+    [Authorize]
     public class PostController : Controller
     {
         #region Fields
