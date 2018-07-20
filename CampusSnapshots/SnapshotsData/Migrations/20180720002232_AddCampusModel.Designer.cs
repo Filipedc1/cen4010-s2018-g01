@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SnapshotsData;
 
 namespace SnapshotsData.Migrations
 {
     [DbContext(typeof(SnapshotsDbContext))]
-    partial class SnapshotsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180720002232_AddCampusModel")]
+    partial class AddCampusModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
