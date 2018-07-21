@@ -154,3 +154,70 @@
     }
 </style>
 
+
+
+<script src="~/js//bootbox.min.js"></script>
+
+@section scripts
+{
+
+    <script>
+
+    //delete post
+    $("#delete-post").click(function (e) {
+
+        e.preventDefault();
+
+        var url = $(this).attr('href');
+
+        bootbox.confirm({
+            title: "Are you sure?",
+            message: "Post will be permanently deleted.",
+            buttons: {
+                confirm: {
+                    label: '<i class="fa fa-check"></i> Confirm',
+                    className: 'btn-primary'
+                },
+                cancel: {
+                    label: '<i class="fa fa-times"></i> Cancel'
+                }
+            },
+            callback: function (result) {
+                if (result) {
+                    window.location.href = url;
+                }
+            }
+        });
+
+    });
+
+    //delete comment
+    $(".delete-comment").click(function (e) {
+
+        e.preventDefault();
+
+        var url = $(this).attr('href');
+
+        bootbox.confirm({
+            title: "Are you sure?",
+            message: "comment will be permanently deleted.",
+            buttons: {
+                confirm: {
+                    label: '<i class="fa fa-check"></i> Confirm',
+                    className: 'btn-primary'
+                },
+                cancel: {
+                    label: '<i class="fa fa-times"></i> Cancel'
+                }
+            },
+            callback: function (result) {
+                if (result) {
+                    window.location.href = url;
+                }
+            }
+        });
+
+    });
+    </script>
+
+}
