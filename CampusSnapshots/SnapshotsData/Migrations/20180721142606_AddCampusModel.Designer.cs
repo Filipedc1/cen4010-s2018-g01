@@ -10,7 +10,7 @@ using SnapshotsData;
 namespace SnapshotsData.Migrations
 {
     [DbContext(typeof(SnapshotsDbContext))]
-    [Migration("20180720002232_AddCampusModel")]
+    [Migration("20180721142606_AddCampusModel")]
     partial class AddCampusModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

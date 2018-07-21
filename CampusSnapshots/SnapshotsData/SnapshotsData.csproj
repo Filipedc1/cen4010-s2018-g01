@@ -7,6 +7,9 @@
   <ItemGroup>
     <Compile Remove="Migrations\20180629014617_AddedCommentsToPostModel.cs" />
     <Compile Remove="Migrations\20180629015029_AddedCommentsToPostModel.cs" />
+    <Compile Remove="Migrations\20180721142428_AddCampusModel.cs" />
+    <Compile Remove="Migrations\20180721142505_Campus.cs" />
+    <Compile Remove="Migrations\20180721142537_AddCampusModel.cs" />
   </ItemGroup>
 
   <ItemGroup>

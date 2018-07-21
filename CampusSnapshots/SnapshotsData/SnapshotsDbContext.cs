@@ -16,6 +16,6 @@ namespace SnapshotsData
         public DbSet<Post> Posts        { get; set; }
         public DbSet<Status> Status     { get; set; }  //dont apply migrations since table already exists. Need this dbset here to be able to access the table
         public DbSet<Comment> Comment   { get; set; }  //dont apply migrations since table already exists. Need this dbset here to be able to access the table
-        public DbSet<Campus> Campus     { get; set; }
+        public DbSet<Campus> Campus    { get; set; }
     }
 }

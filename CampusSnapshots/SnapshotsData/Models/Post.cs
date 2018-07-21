@@ -16,5 +16,6 @@ namespace SnapshotsData.Models
         public Status Status                    { get; set; } 
         public PostType PostType                { get; set; }
         public IEnumerable<Comment> Comments    { get; set; }
+        public Campus Campus                    { get; set; }
     }
 }

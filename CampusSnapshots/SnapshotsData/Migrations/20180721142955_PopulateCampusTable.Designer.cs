@@ -10,8 +10,8 @@ using SnapshotsData;
 namespace SnapshotsData.Migrations
 {
     [DbContext(typeof(SnapshotsDbContext))]
-    [Migration("20180718032757_SeedUsers")]
-    partial class SeedUsers
+    [Migration("20180721142955_PopulateCampusTable")]
+    partial class PopulateCampusTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,26 @@ namespace SnapshotsData.Migrations
                 .HasAnnotation("ProductVersion", "2.1.0-rtm-30799")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("SnapshotsData.Models.Campus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Campus");
+                });
 
             modelBuilder.Entity("SnapshotsData.Models.Comment", b =>
                 {
@@ -67,6 +87,8 @@ namespace SnapshotsData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("CampusId");
+
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<string>("Description");
@@ -80,6 +102,8 @@ namespace SnapshotsData.Migrations
                     b.Property<string>("Url");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CampusId");
 
                     b.HasIndex("StatusId");
 
@@ -112,6 +136,10 @@ namespace SnapshotsData.Migrations
 
             modelBuilder.Entity("SnapshotsData.Models.Post", b =>
                 {
+                    b.HasOne("SnapshotsData.Models.Campus", "Campus")
+                        .WithMany()
+                        .HasForeignKey("CampusId");
+
                     b.HasOne("SnapshotsData.Models.Status", "Status")
                         .WithMany()
                         .HasForeignKey("StatusId");

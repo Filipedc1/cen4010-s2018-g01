@@ -10,8 +10,8 @@ using SnapshotsData;
 namespace SnapshotsData.Migrations
 {
     [DbContext(typeof(SnapshotsDbContext))]
-    [Migration("20180720002353_PopulateCampusTable")]
-    partial class PopulateCampusTable
+    [Migration("20180721142752_AddCampusToPostModel")]
+    partial class AddCampusToPostModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -87,6 +87,8 @@ namespace SnapshotsData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("CampusId");
+
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<string>("Description");
@@ -100,6 +102,8 @@ namespace SnapshotsData.Migrations
                     b.Property<string>("Url");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CampusId");
 
                     b.HasIndex("StatusId");
 
@@ -132,6 +136,10 @@ namespace SnapshotsData.Migrations
 
             modelBuilder.Entity("SnapshotsData.Models.Post", b =>
                 {
+                    b.HasOne("SnapshotsData.Models.Campus", "Campus")
+                        .WithMany()
+                        .HasForeignKey("CampusId");
+
                     b.HasOne("SnapshotsData.Models.Status", "Status")
                         .WithMany()
                         .HasForeignKey("StatusId");
