@@ -1,0 +1,97 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@model LoginViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<img class="img-thumbnail fau-icon center-block" src="~/images/FAUOwl.jpg" />
+<h2 id="title">Welcome to Owl-iView</h2>
+
+<div class="login-form">
+    <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+        <h2 class="text-center">Login</h2>
+        <hr />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input asp-for="Email" class="form-control" placeholder="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input asp-for="Password" class="form-control" placeholder="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary login-button btn-block">Log in</button>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label class="pull-left" asp-for="RememberMe">
+                    <input asp-for="RememberMe" />
+                    @Html.DisplayNameFor(m => m.RememberMe)
+                </label>
+                <a class="pull-right" asp-action="ForgotPassword">Forgot your password?</a>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+
+<style type="text/css">
+    .login-form {
+        width: 400px;
+        margin: 20px auto;
+    }
+
+        .login-form form {
+            margin-bottom: 15px;
+            background: #f7f7f7;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+
+        .login-form h2 {
+            margin: 0 0 15px;
+        }
+
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+
+    .btn {
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    #title {
+        text-align: center;
+    }
+
+    .fau-icon {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 250px;
+        border: none;
+    }
+
+    .input-group-addon .fa {
+        font-size: 18px;
+    }
+</style>
