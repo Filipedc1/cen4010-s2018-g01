@@ -114,7 +114,6 @@ namespace CampusSnapshots.Controllers
             return BadRequest();
         }
 
-        //not working yet
         public void DeleteImageFromHostingEnvironment(string url)
         {
             var filename = Path.GetFileName(url);
@@ -150,7 +149,7 @@ namespace CampusSnapshots.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveForm(PostFormViewModel post, IFormFile pic) 
+        public IActionResult SaveForm(PostFormViewModel postVM, IFormFile pic) 
         {
             //if not valid, return the user the New Post page
             if (!ModelState.IsValid)
@@ -160,20 +159,20 @@ namespace CampusSnapshots.Controllers
                 return View("PostForm", vM);
             }
 
-            var p = new Post
+            var post = new Post
             {
-                Id = post.Id,
-                Title = post.Title,
-                Description = post.Description,
-                DateCreated = post.DateCreated,
-                Url = post.Url,
-                Status = post.Status,
-                PostType = post.PostType,
-                Campus = _campus.GetById(post.Campus.Id)
+                Id = postVM.Id,
+                Title = postVM.Title,
+                Description = postVM.Description,
+                DateCreated = postVM.DateCreated,
+                Url = postVM.Url,
+                Status = postVM.Status,
+                PostType = postVM.PostType,
+                Campus = _campus.GetById(postVM.Campus.Id)
             };
 
             //if true, then it's a new post
-            if (post.Id == 0)
+            if (postVM.Id == 0)
             {
                 string filename = string.Empty;
 
@@ -181,19 +180,19 @@ namespace CampusSnapshots.Controllers
                 if (pic != null)
                 {
                     filename = UploadImage(pic);
-                    post.Url = "/images/" + Path.GetFileName(pic.FileName);
+                    postVM.Url = "/images/" + Path.GetFileName(pic.FileName);
                 }
 
-                if (_posts.AddNewPost(p))
+                if (_posts.AddNewPost(post))
                 {
-                    return (post.PostType == PostType.Issue) ? RedirectToAction("Issues") : RedirectToAction("Events");
+                    return (postVM.PostType == PostType.Issue) ? RedirectToAction("Issues") : RedirectToAction("Events");
                 }
             }
             else 
             {
-                if (_posts.EditPost(p))
+                if (_posts.EditPost(post))
                 {
-                    return RedirectToAction("Detail", new { post.Id });
+                    return RedirectToAction("Detail", new { postVM.Id });
                 }
             }
 
