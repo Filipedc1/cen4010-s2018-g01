@@ -16,6 +16,7 @@ namespace CampusSnapshots.ViewModels
         public PostType EventOrIssue             { get; set; }
         public Status Status                     { get; set; }
         public IEnumerable<Comment> Comments     { get; set; }
+        public Campus Campus                     { get; set; }
         public Comment Comment                   { get; set; } //used for adding new comment. TESTING
     }
 }
