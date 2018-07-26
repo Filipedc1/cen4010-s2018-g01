@@ -77,7 +77,8 @@ namespace CampusSnapshots.Controllers
                 ImageUrl = post.Url,
                 EventOrIssue = post.PostType,
                 Status = post.Status,
-                Comments = _posts.GetAllCommentsByPostId(post.Id)
+                Comments = _posts.GetAllCommentsByPostId(post.Id),
+                Campus = post.Campus
                 //Comments = post.Comments?.Where(p => p.Post.Id == id)
             };
 
@@ -180,7 +181,7 @@ namespace CampusSnapshots.Controllers
                 if (pic != null)
                 {
                     filename = UploadImage(pic);
-                    postVM.Url = "/images/" + Path.GetFileName(pic.FileName);
+                    post.Url = "/images/" + Path.GetFileName(pic.FileName);
                 }
 
                 if (_posts.AddNewPost(post))
