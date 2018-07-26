@@ -27,10 +27,13 @@
         </div>
         <div class="col-md-4 detailInfo">
             <table>
-                <tr>
-                    <td class="postLabel">Status: </td>
-                    <td class="postValue">@Model.Status.Name</td>
-                </tr>
+                @if (Model.EventOrIssue == SnapshotsData.Models.PostType.Issue)
+                {
+                    <tr>
+                        <td class="postLabel">Status: </td>
+                        <td class="postValue">@Model.Status.Name</td>
+                    </tr>
+                }
                 <tr>
                     <td class="postLabel">Type: </td>
                     <td class="postValue">@Model.EventOrIssue</td>

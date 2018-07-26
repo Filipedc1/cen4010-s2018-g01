@@ -51,8 +51,15 @@ namespace SnapshotsServices
 
             post.DateCreated = DateTime.Now;
 
-            //sets the default status for the post as "reported"
-            post.Status = SetStatusForNewPosts();
+            //sets the default status for the post as "reported" If its a User
+            if (post.Status.Id == 0)
+            {
+                post.Status = SetStatusForNewPosts();
+            }
+            else //Admins are required to set the status themselves in the UI
+            {
+                post.Status = GetStatusById(post.Status.Id);
+            }
 
             context.Posts.Add(post);
             context.SaveChanges();
@@ -63,6 +70,16 @@ namespace SnapshotsServices
         public Status SetStatusForNewPosts()
         {
             return context.Status.FirstOrDefault(x => x.Id == 1);
+        }
+
+        public IEnumerable<Status> GetListOfStatus()
+        {
+            return context.Status;
+        }
+
+        public Status GetStatusById(int id)
+        {
+            return context.Status.FirstOrDefault(s => s.Id == id);
         }
 
         public bool DeletePost(Post post)
@@ -95,6 +112,8 @@ namespace SnapshotsServices
                 postInDatabase.Title = post.Title;
                 postInDatabase.Description = post.Description;
                 postInDatabase.PostType = post.PostType;
+                postInDatabase.Campus = post.Campus;
+                postInDatabase.Status = GetStatusById(post.Status.Id);
 
                 context.SaveChanges();
                 return true;

@@ -91,6 +91,7 @@ namespace CampusSnapshots.Controllers
             var formVM = new PostFormViewModel()
             {
                 Campuses = campuses,
+                Statuses = _posts.GetListOfStatus()
             };
 
             return View("PostForm", formVM);
@@ -142,7 +143,10 @@ namespace CampusSnapshots.Controllers
                 DateCreated = post.DateCreated,
                 Url = post.Url,
                 PostType = post.PostType,
-                Status = post.Status
+                Status = post.Status,
+                Campus = post.Campus,
+                Campuses = _campus.GetAll(),
+                Statuses = _posts.GetListOfStatus()
             };
 
 

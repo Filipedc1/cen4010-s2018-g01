@@ -36,7 +36,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label asp-for="PostType"></label>
                             <select asp-for="PostType" asp-items="Html.GetEnumSelectList(Model.PostType.GetType())" class="form-control" id="postTypeSelect">
-                                <option selected="selected" value="">Select</option>
+                                <option value="">Select</option>
                             </select>
                         </div>
                     </div>
@@ -49,6 +49,20 @@
                         </div>
                     </div>
                 </div>
+
+                <!--Status can only be modified if an Admin is editing an issue-->
+                @if (User.IsInRole("Admin") && Model.PostType == SnapshotsData.Models.PostType.Issue)
+                {
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label asp-for="Status"></label>
+                                @Html.DropDownListFor(s => s.Status.Id, new SelectList(Model.Statuses, "Id", "Name"), "Select Status", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                }
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-xs-12">
