@@ -21,14 +21,16 @@ namespace CampusSnapshots.Controllers
 
         private readonly IHostingEnvironment _hosting;
         private readonly IPost _posts;
+        private readonly ICampus _campus;
 
         #endregion
 
         #region Constructor
 
-        public PostController(IPost post, IHostingEnvironment he)
+        public PostController(IPost post, ICampus campus, IHostingEnvironment he)
         {
             this._posts = post;
+            this._campus = campus;
             this._hosting = he;
         }
 
@@ -84,7 +86,11 @@ namespace CampusSnapshots.Controllers
 
         public IActionResult NewPost()
         {
-            var formVM = new PostFormViewModel();
+            var campuses = _campus.GetAll();
+            var formVM = new PostFormViewModel()
+            {
+                Campuses = campuses,
+            };
 
             return View("PostForm", formVM);
         }
@@ -144,7 +150,7 @@ namespace CampusSnapshots.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveForm(Post post, IFormFile pic) 
+        public IActionResult SaveForm(PostFormViewModel post, IFormFile pic) 
         {
             //if not valid, return the user the New Post page
             if (!ModelState.IsValid)
@@ -153,6 +159,18 @@ namespace CampusSnapshots.Controllers
 
                 return View("PostForm", vM);
             }
+
+            var p = new Post
+            {
+                Id = post.Id,
+                Title = post.Title,
+                Description = post.Description,
+                DateCreated = post.DateCreated,
+                Url = post.Url,
+                Status = post.Status,
+                PostType = post.PostType,
+                Campus = _campus.GetById(post.Campus.Id)
+            };
 
             //if true, then it's a new post
             if (post.Id == 0)
@@ -166,14 +184,14 @@ namespace CampusSnapshots.Controllers
                     post.Url = "/images/" + Path.GetFileName(pic.FileName);
                 }
 
-                if (_posts.AddNewPost(post))
+                if (_posts.AddNewPost(p))
                 {
                     return (post.PostType == PostType.Issue) ? RedirectToAction("Issues") : RedirectToAction("Events");
                 }
             }
             else 
             {
-                if (_posts.EditPost(post))
+                if (_posts.EditPost(p))
                 {
                     return RedirectToAction("Detail", new { post.Id });
                 }
