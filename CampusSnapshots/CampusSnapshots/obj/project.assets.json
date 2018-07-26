@@ -12257,7 +12257,7 @@
       ]
     },
     "System.Security.Cryptography.Xml/4.4.2": {
-      "sha512": "1m+fKVrApgKYMRuE0MF0vGjqy4XqAp1rCtyAzMXhJajMDDytMh/rHk9hp4M7KKk3QQZoWJUvyUY7xcw74w+JiQ==",
+      "sha512": "q9Dren/YP5jhRCkDvLfuaPpMTQzP97ANvzq/OoGgwK8YdLRSTABS9oW5/23OKoM2DRCuBrh4qaecD2YNhPtuzQ==",
       "type": "package",
       "path": "system.security.cryptography.xml/4.4.2",
       "files": [
@@ -13464,23 +13464,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Filipe\\.nuget\\packages\\": {},
+    "C:\\Users\\jonat\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FAU Computer Science\\Summer 2018\\Principles of Software Engineering\\cen4010-s2018-g01\\CampusSnapshots\\CampusSnapshots\\CampusSnapshots.csproj",
+      "projectUniqueName": "C:\\Users\\jonat\\Documents\\School\\Summer 2018\\PrincSoftwareEngineering\\cen4010-s2018-g01\\CampusSnapshots\\CampusSnapshots\\CampusSnapshots.csproj",
       "projectName": "CampusSnapshots",
-      "projectPath": "D:\\FAU Computer Science\\Summer 2018\\Principles of Software Engineering\\cen4010-s2018-g01\\CampusSnapshots\\CampusSnapshots\\CampusSnapshots.csproj",
-      "packagesPath": "C:\\Users\\Filipe\\.nuget\\packages\\",
-      "outputPath": "D:\\FAU Computer Science\\Summer 2018\\Principles of Software Engineering\\cen4010-s2018-g01\\CampusSnapshots\\CampusSnapshots\\obj\\",
+      "projectPath": "C:\\Users\\jonat\\Documents\\School\\Summer 2018\\PrincSoftwareEngineering\\cen4010-s2018-g01\\CampusSnapshots\\CampusSnapshots\\CampusSnapshots.csproj",
+      "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jonat\\Documents\\School\\Summer 2018\\PrincSoftwareEngineering\\cen4010-s2018-g01\\CampusSnapshots\\CampusSnapshots\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Filipe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13493,11 +13493,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\FAU Computer Science\\Summer 2018\\Principles of Software Engineering\\cen4010-s2018-g01\\CampusSnapshots\\SnapshotsData\\SnapshotsData.csproj": {
-              "projectPath": "D:\\FAU Computer Science\\Summer 2018\\Principles of Software Engineering\\cen4010-s2018-g01\\CampusSnapshots\\SnapshotsData\\SnapshotsData.csproj"
+            "C:\\Users\\jonat\\Documents\\School\\Summer 2018\\PrincSoftwareEngineering\\cen4010-s2018-g01\\CampusSnapshots\\SnapshotsData\\SnapshotsData.csproj": {
+              "projectPath": "C:\\Users\\jonat\\Documents\\School\\Summer 2018\\PrincSoftwareEngineering\\cen4010-s2018-g01\\CampusSnapshots\\SnapshotsData\\SnapshotsData.csproj"
             },
-            "D:\\FAU Computer Science\\Summer 2018\\Principles of Software Engineering\\cen4010-s2018-g01\\CampusSnapshots\\SnapshotsServices\\SnapshotsServices.csproj": {
-              "projectPath": "D:\\FAU Computer Science\\Summer 2018\\Principles of Software Engineering\\cen4010-s2018-g01\\CampusSnapshots\\SnapshotsServices\\SnapshotsServices.csproj"
+            "C:\\Users\\jonat\\Documents\\School\\Summer 2018\\PrincSoftwareEngineering\\cen4010-s2018-g01\\CampusSnapshots\\SnapshotsServices\\SnapshotsServices.csproj": {
+              "projectPath": "C:\\Users\\jonat\\Documents\\School\\Summer 2018\\PrincSoftwareEngineering\\cen4010-s2018-g01\\CampusSnapshots\\SnapshotsServices\\SnapshotsServices.csproj"
             }
           }
         }

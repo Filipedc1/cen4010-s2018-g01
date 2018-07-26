@@ -16,7 +16,7 @@ namespace SnapshotsData
 
         bool DeletePost(Post post);
 
-        bool EditPost(Post id);
+        bool EditPost(Post post);
 
         Status SetStatusForNewPosts();
 

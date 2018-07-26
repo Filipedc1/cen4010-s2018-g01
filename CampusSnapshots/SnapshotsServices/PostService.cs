@@ -30,13 +30,15 @@ namespace SnapshotsServices
         public IEnumerable<Post> GetAll()
         {
             return context.Posts
-                .Include(p => p.Status);
+                .Include(p => p.Status)
+                .Include(location => location.Campus);
         }
 
         public Post GetById(int id)
         {
             return context.Posts
                 .Include(p => p.Status)
+                .Include(location => location.Campus)
                 .FirstOrDefault(post => post.Id == id);
         }
 

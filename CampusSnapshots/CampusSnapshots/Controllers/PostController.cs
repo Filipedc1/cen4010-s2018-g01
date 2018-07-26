@@ -21,17 +21,19 @@ namespace CampusSnapshots.Controllers
 
         private readonly IHostingEnvironment _hosting;
         private readonly IPost _posts;
+        private readonly ICampus _campus; 
 
         #endregion
 
         #region Constructor
 
-        public PostController(IPost post, IHostingEnvironment he)
+        public PostController(IPost post, IHostingEnvironment he, ICampus campus)
         {
             this._posts = post;
             this._hosting = he;
+            this._campus = campus;
         }
-
+    
         #endregion
         
         #region Post Methods
@@ -84,8 +86,13 @@ namespace CampusSnapshots.Controllers
 
         public IActionResult NewPost()
         {
-            var formVM = new PostFormViewModel();
+            var campuses = _campus.GetAll();
 
+            var formVM = new PostFormViewModel()
+            {
+                Campuses = campuses,
+            };
+            
             return View("PostForm", formVM);
         }
 
@@ -144,7 +151,7 @@ namespace CampusSnapshots.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveForm(Post post, IFormFile pic) 
+        public IActionResult SaveForm(PostFormViewModel postVM, IFormFile pic) 
         {
             //if not valid, return the user the New Post page
             if (!ModelState.IsValid)
@@ -154,8 +161,20 @@ namespace CampusSnapshots.Controllers
                 return View("PostForm", vM);
             }
 
+            var post = new Post()
+            {
+                Campus = _campus.GetById(postVM.Campus.Id),
+                Id = postVM.Id,
+                Title = postVM.Title,
+                Description = postVM.Description,
+                DateCreated = postVM.DateCreated,
+                Url = postVM.Url,
+                Status = postVM.Status,
+                PostType = postVM.PostType
+            };
+
             //if true, then it's a new post
-            if (post.Id == 0)
+            if (postVM.Id == 0)
             {
                 string filename = string.Empty;
 
@@ -163,19 +182,19 @@ namespace CampusSnapshots.Controllers
                 if (pic != null)
                 {
                     filename = UploadImage(pic);
-                    post.Url = "/images/" + Path.GetFileName(pic.FileName);
+                    postVM.Url = "/images/" + Path.GetFileName(pic.FileName);
                 }
 
                 if (_posts.AddNewPost(post))
                 {
-                    return (post.PostType == PostType.Issue) ? RedirectToAction("Issues") : RedirectToAction("Events");
+                    return (postVM.PostType == PostType.Issue) ? RedirectToAction("Issues") : RedirectToAction("Events");
                 }
             }
             else 
             {
                 if (_posts.EditPost(post))
                 {
-                    return RedirectToAction("Detail", new { post.Id });
+                    return RedirectToAction("Detail", new { postVM.Id });
                 }
             }
 
