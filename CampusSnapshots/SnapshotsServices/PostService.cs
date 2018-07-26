@@ -30,6 +30,7 @@ namespace SnapshotsServices
         public IEnumerable<Post> GetAll()
         {
             return context.Posts
+                .Include(location => location.Campus)
                 .Include(p => p.Status);
         }
 
@@ -37,6 +38,7 @@ namespace SnapshotsServices
         {
             return context.Posts
                 .Include(p => p.Status)
+                .Include(location => location.Campus)
                 .FirstOrDefault(post => post.Id == id);
         }
 
