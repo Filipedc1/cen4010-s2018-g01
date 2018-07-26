@@ -20,6 +20,10 @@ namespace SnapshotsData
 
         Status SetStatusForNewPosts();
 
+        Status GetStatusById(int id);
+
+        IEnumerable<Status> GetListOfStatus();
+
         bool AddNewComment(int postId, Comment comment);
 
         IEnumerable<Comment> GetAllCommentsByPostId(int id);
