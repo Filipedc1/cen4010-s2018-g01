@@ -37,7 +37,7 @@ namespace CampusSnapshots.Controllers
             {
                 Users = users
             };
-
+            
             return View(vM);
         }
 

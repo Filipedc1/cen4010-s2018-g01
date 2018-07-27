@@ -13,11 +13,12 @@
 </div>
 
 <!--Members Table-->
-<div id="assets">
+<div id="members">
     <div id="membersTable">
         <table class="table table-condensed" id="memberIndexTable">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Email Confirmed</th>
@@ -30,12 +31,10 @@
             <tbody>
                 @foreach (var user in Model.Users)
                 {
-                    <tr class="assetRow">
-                        @*<td class="">
-                                <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@asset.Id">
-                                    <img src="@asset.ImageUrl" class="imageCell" />
-                                </a>
-                            </td>*@
+                    <tr class="memberRow">
+                        <td class="">
+                            <p><i class="fa fa-user-circle fa-lg" aria-hidden="true"></i></p>
+                        </td>
                         <td class="">@($"{user.FirstName} {user.LastName}")</td>
                         <td class="">@user.Email</td>
                         <td class="">@user.EmailConfirmed</td>
