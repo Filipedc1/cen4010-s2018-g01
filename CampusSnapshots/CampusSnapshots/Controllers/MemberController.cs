@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CampusSnapshots.Data;
+using CampusSnapshots.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using SnapshotsData;
 
@@ -11,15 +13,16 @@ namespace CampusSnapshots.Controllers
     {
         #region Fields
 
-        private readonly IMember _member;
+        private readonly ApplicationDbContext database;
+
 
         #endregion
 
         #region Constructor
 
-        public MemberController(IMember member)
+        public MemberController(ApplicationDbContext context)
         {
-            this._member = member;
+            this.database = context;
         }
 
         #endregion
@@ -28,7 +31,14 @@ namespace CampusSnapshots.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var users = database.Users.ToList();
+
+            var vM = new MemberIndexViewModel
+            {
+                Users = users
+            };
+
+            return View(vM);
         }
 
         #endregion
