@@ -2,6 +2,7 @@
 using SnapshotsData.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,8 +14,14 @@ namespace CampusSnapshots.ViewModels
     {
         public int Id                           { get; set; }
         public FormType FormType                { get; set; }
+
+        [Required]
+        [StringLength(30, ErrorMessage = "No more than 30 characters permitted")]
         public string Title                     { get; set; }
+
+        [Required]
         public string Description               { get; set; }
+
         public DateTime DateCreated             { get; set; }
         public string Url                       { get; set; }
         public PostType PostType                { get; set; }
@@ -22,6 +29,8 @@ namespace CampusSnapshots.ViewModels
         public IEnumerable<Status> Statuses     { get; set; }
         public IFormFile ImageUpload            { get; set; }
         public IEnumerable<Campus> Campuses     { get; set; }
+
+        [Required]
         public Campus Campus                    { get; set; }
 
         #region Constructor
