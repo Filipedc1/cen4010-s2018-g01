@@ -159,7 +159,11 @@ namespace CampusSnapshots.Controllers
             //if not valid, return the user the New Post page
             if (!ModelState.IsValid)
             {
-                var vM = new PostFormViewModel();
+                var vM = new PostFormViewModel()
+                {
+                    Campuses = _campus.GetAll(),
+                    Statuses = _posts.GetListOfStatus()
+                };
 
                 return View("PostForm", vM);
             }
