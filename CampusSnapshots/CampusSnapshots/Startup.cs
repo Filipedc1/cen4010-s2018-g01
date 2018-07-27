@@ -75,7 +75,6 @@ namespace CampusSnapshots
             services.AddSingleton(Configuration);
 
             //allows MemberService to get injected into the Member controller anytime it is requesting the IMember interface
-            services.AddScoped<IMember, MemberService>();
             services.AddScoped<IPost, PostService>();
             services.AddScoped<ICampus, CampusService>();
 

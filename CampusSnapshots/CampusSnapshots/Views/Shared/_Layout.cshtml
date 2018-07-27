@@ -45,6 +45,11 @@
                         <li><a asp-area="" asp-controller="Post" asp-action="Issues">Issues</a></li>
                         <li><a asp-area="" asp-controller="Post" asp-action="Events">Events</a></li>
                         <li><a asp-area="" asp-controller="Post" asp-action="NewPost">New Post</a></li>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li><a asp-area="" asp-controller="Member" asp-action="Index">Members</a></li>
+                        }
                     }
 
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>

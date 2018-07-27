@@ -21,7 +21,7 @@ namespace CampusSnapshots.Controllers
 
         private readonly IHostingEnvironment _hosting;
         private readonly IPost _posts;
-        private readonly ICampus _campus;
+        private readonly ICampus _campus; 
 
         #endregion
 
@@ -31,7 +31,7 @@ namespace CampusSnapshots.Controllers
         {
             this._posts = post;
             this._campus = campus;
-            this._hosting = he;
+            this._hosting = he; 
         }
 
         #endregion
