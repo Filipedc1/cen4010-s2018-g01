@@ -5,11 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CampusSnapshots.Models;
+using SnapshotsData;
+using CampusSnapshots.ViewModels;
 
 namespace CampusSnapshots.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ICampus _campus;
+
+        public HomeController(ICampus campues)
+        {
+            this._campus = campues;
+        }
+
+
+
         public IActionResult Index()
         {
             return View();
@@ -24,9 +35,12 @@ namespace CampusSnapshots.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            var viewModel = new ContactViewModel
+            {
+                Campuses = _campus.GetAll()
+            };
 
-            return View();
+            return View(viewModel);
         }
 
         public IActionResult Error()
