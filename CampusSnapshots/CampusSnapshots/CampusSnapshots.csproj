@@ -5,17 +5,10 @@
     <UserSecretsId>aspnet-CampusSnapshots-E65D8012-B852-47C5-A95D-C2104C4D5BA6</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Data\Migrations\20180718032327_SeedUsers.cs" />
-    <Compile Remove="Data\Migrations\20180718032327_SeedUsers.Designer.cs" />
-    <Compile Remove="Data\Migrations\20180718032639_InitialMigrationWhereAdminRoleWasCreated.cs" />
-    <Compile Remove="Data\Migrations\20180718032639_InitialMigrationWhereAdminRoleWasCreated.Designer.cs" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="Bootbox.JS" Version="4.4.1" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.0" PrivateAssets="All" />
