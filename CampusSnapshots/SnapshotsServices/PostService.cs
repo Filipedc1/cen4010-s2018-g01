@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CampusSnapshots.Models;
+using Microsoft.EntityFrameworkCore;
 using SnapshotsData;
 using SnapshotsData.Models;
 using System;
@@ -127,7 +128,7 @@ namespace SnapshotsServices
 
         #region Comment Helper Methods
 
-        public bool AddNewComment(int postId, Comment comment)
+        public bool AddNewComment(int postId, Comment comment, ApplicationUser commentAuthor)
         {
             if (comment == null)
                 return false;
@@ -137,6 +138,7 @@ namespace SnapshotsServices
             {
                 comment.Post = postInDB;
                 comment.SendTime = DateTime.Now;
+                comment.User = commentAuthor;
 
                 context.Comment.Add(comment);
                 context.SaveChanges();

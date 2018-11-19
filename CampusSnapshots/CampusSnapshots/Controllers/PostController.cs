@@ -71,7 +71,7 @@ namespace CampusSnapshots.Controllers
         }
 
         //Displays details about a post when selected
-        public async Task<IActionResult> Detail(int id)
+        public IActionResult Detail(int id)
         {
             var post = _posts.GetById(id);
 
@@ -224,14 +224,17 @@ namespace CampusSnapshots.Controllers
         #region Comment Methods
 
         [HttpPost]
-        public IActionResult AddComment(PostDetailViewModel vm)
+        public async Task<IActionResult> AddComment(PostDetailViewModel vm)
         {
             if (!ModelState.IsValid || vm.Comment == null)
             {
                 return BadRequest();
             }
 
-            if (_posts.AddNewComment(vm.PostId, vm.Comment))
+            var userId = userManager.GetUserId(User);
+            var user = await userManager.FindByIdAsync(userId);
+
+            if (_posts.AddNewComment(vm.PostId, vm.Comment, user))
             {
                 return RedirectToAction("Detail", "Post", new { @id = vm.PostId });
             }

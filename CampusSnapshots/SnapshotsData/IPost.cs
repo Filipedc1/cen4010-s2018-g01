@@ -1,4 +1,5 @@
-﻿using SnapshotsData.Models;
+﻿using CampusSnapshots.Models;
+using SnapshotsData.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,7 +25,7 @@ namespace SnapshotsData
 
         IEnumerable<Status> GetListOfStatus();
 
-        bool AddNewComment(int postId, Comment comment);
+        bool AddNewComment(int postId, Comment comment, ApplicationUser commentAuthor);
 
         IEnumerable<Comment> GetAllCommentsByPostId(int id);
 

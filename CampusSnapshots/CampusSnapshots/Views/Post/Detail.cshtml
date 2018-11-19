@@ -78,15 +78,25 @@
             </h4>
         </div>
         <div id="collapse1" class="panel-collapse collapse in">
-            @if (Model.Comments != null && Model.Comments.Count() != 0)
+            @if (Model.Comments.Any())
             {
                 @foreach (var comment in Model.Comments)
                 {
                     <div class="panel-body">
-                        @comment.Content
-                        <i>
-                            <a id="delete-comment" class="far fa-trash-alt pull-right" role="button" asp-controller="Post" asp-action="DeleteComment" asp-route-id="@comment.Id"></a>
-                        </i>
+                        <div class="col-md-3 replyAuthorContainer">
+                            <div class="postAuthorImage" style=""></div>
+
+                            <a> @comment.User.UserName</a><br />
+                            <span class="postDate">@comment.SendTime</span>
+                        </div>
+                        <div class="col-md-9 replyContentContainer">
+                            <div class="postContent">
+                                @Html.Raw(comment.Content)
+                                <i>
+                                    <a id="delete-comment" class="far fa-trash-alt pull-right" role="button" asp-controller="Post" asp-action="DeleteComment" asp-route-id="@comment.Id"></a>
+                                </i>
+                            </div>
+                        </div>
                     </div>
                 }
             }
