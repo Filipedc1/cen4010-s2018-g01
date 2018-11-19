@@ -39,6 +39,7 @@ namespace SnapshotsServices
             return context.Posts
                 .Include(p => p.Status)
                 .Include(location => location.Campus)
+                .Include(p => p.User)
                 .FirstOrDefault(post => post.Id == id);
         }
 

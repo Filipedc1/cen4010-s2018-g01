@@ -73,6 +73,7 @@ namespace CampusSnapshots
             //allows MemberService to get injected into the Member controller anytime it is requesting the IMember interface
             services.AddScoped<IPost, PostService>();
             services.AddScoped<ICampus, CampusService>();
+            services.AddScoped<IApplicationUser, ApplicationUserService>();
 
             services.AddTransient<DataSeeder>();
             services.AddMvc();
@@ -80,7 +81,7 @@ namespace CampusSnapshots
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public async void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
