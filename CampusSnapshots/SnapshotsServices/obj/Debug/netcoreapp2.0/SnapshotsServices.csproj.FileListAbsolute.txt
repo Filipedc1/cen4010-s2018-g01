@@ -22,5 +22,3 @@ C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s20
 C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\obj\Debug\netcoreapp2.0\SnapshotsServices.csproj.CopyComplete
 C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\obj\Debug\netcoreapp2.0\SnapshotsServices.dll
 C:\Users\jonat\Documents\School\Summer 2018\PrincSoftwareEngineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\obj\Debug\netcoreapp2.0\SnapshotsServices.pdb
-D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\bin\Debug\netcoreapp2.0\SnapshotsServices.runtimeconfig.json
-D:\FAU Computer Science\Summer 2018\Principles of Software Engineering\cen4010-s2018-g01\CampusSnapshots\SnapshotsServices\bin\Debug\netcoreapp2.0\SnapshotsServices.runtimeconfig.dev.json

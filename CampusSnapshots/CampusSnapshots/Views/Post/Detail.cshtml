@@ -4,7 +4,7 @@
 <div class="container">
     <div class="page-header clearfix detailHeading">
         <h2 class="text-muted">
-            Details
+            Details: 
             <span>
                 <a id="delete-post" class="btn btn-md btn-danger pull-right" role="button" asp-controller="Post" asp-action="Delete" asp-route-id="@Model.PostId">Delete Post</a>
                 <a id="edit-post" class="btn btn-md btn-info pull-right" role="button" asp-controller="Post" asp-action="Edit" asp-route-id="@Model.PostId">Edit Post</a>
@@ -37,6 +37,10 @@
                 <tr>
                     <td class="postLabel">Type: </td>
                     <td class="postValue">@Model.EventOrIssue</td>
+                </tr>
+                <tr>
+                    <td class="postLabel">Reporter: </td>
+                    <td class="postValue">@Model.User.UserName</td>
                 </tr>
                 <tr>
                     <td class="postLabel">Created: </td>

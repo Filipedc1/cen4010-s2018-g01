@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CampusSnapshots.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -17,5 +18,7 @@ namespace SnapshotsData.Models
         public PostType PostType                { get; set; }
         public IEnumerable<Comment> Comments    { get; set; }
         public Campus Campus                    { get; set; }
+
+        public virtual ApplicationUser User     { get; set; }
     }
 }

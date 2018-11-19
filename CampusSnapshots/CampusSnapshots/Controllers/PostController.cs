@@ -11,6 +11,8 @@ using SnapshotsData;
 using SnapshotsData.Models;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using CampusSnapshots.Models;
 
 namespace CampusSnapshots.Controllers
 {
@@ -23,15 +25,18 @@ namespace CampusSnapshots.Controllers
         private readonly IPost _posts;
         private readonly ICampus _campus; 
 
+        private UserManager<ApplicationUser> userManager;
+
         #endregion
 
         #region Constructor
 
-        public PostController(IPost post, ICampus campus, IHostingEnvironment he)
+        public PostController(IPost post, ICampus campus, UserManager<ApplicationUser> manager, IHostingEnvironment he)
         {
             this._posts = post;
             this._campus = campus;
-            this._hosting = he; 
+            this._hosting = he;
+            this.userManager = manager;
         }
 
         #endregion
@@ -64,9 +69,11 @@ namespace CampusSnapshots.Controllers
         }
 
         //Displays details about a post when selected
-        public IActionResult Detail(int id)
+        public async Task<IActionResult> Detail(int id)
         {
             var post = _posts.GetById(id);
+            var userId = userManager.GetUserId(User);
+            var user = await userManager.FindByIdAsync(userId);
 
             var viewModel = new PostDetailViewModel()
             {
@@ -78,7 +85,8 @@ namespace CampusSnapshots.Controllers
                 EventOrIssue = post.PostType,
                 Status = post.Status,
                 Comments = _posts.GetAllCommentsByPostId(post.Id),
-                Campus = post.Campus
+                Campus = post.Campus,
+                User = user
                 //Comments = post.Comments?.Where(p => p.Post.Id == id)
             };
 
@@ -154,7 +162,7 @@ namespace CampusSnapshots.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveForm(PostFormViewModel postVM, IFormFile pic) 
+        public async Task<IActionResult> SaveForm(PostFormViewModel postVM, IFormFile pic) 
         {
             //if not valid, return the user the New Post page
             if (!ModelState.IsValid)
@@ -168,6 +176,9 @@ namespace CampusSnapshots.Controllers
                 return View("PostForm", vM);
             }
 
+            var userId = userManager.GetUserId(User);
+            var user = await userManager.FindByIdAsync(userId);
+
             var post = new Post
             {
                 Id = postVM.Id,
@@ -177,7 +188,8 @@ namespace CampusSnapshots.Controllers
                 Url = postVM.Url,
                 Status = postVM.Status,
                 PostType = postVM.PostType,
-                Campus = _campus.GetById(postVM.Campus.Id)
+                Campus = _campus.GetById(postVM.Campus.Id),
+                User = user
             };
 
             //if true, then it's a new post
