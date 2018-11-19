@@ -23,7 +23,8 @@ namespace CampusSnapshots.Controllers
 
         private readonly IHostingEnvironment _hosting;
         private readonly IPost _posts;
-        private readonly ICampus _campus; 
+        private readonly ICampus _campus;
+        private readonly IApplicationUser userService;
 
         private UserManager<ApplicationUser> userManager;
 
@@ -31,12 +32,13 @@ namespace CampusSnapshots.Controllers
 
         #region Constructor
 
-        public PostController(IPost post, ICampus campus, UserManager<ApplicationUser> manager, IHostingEnvironment he)
+        public PostController(IPost post, ICampus campus, UserManager<ApplicationUser> manager, IApplicationUser userService, IHostingEnvironment he)
         {
             this._posts = post;
             this._campus = campus;
             this._hosting = he;
             this.userManager = manager;
+            this.userService = userService;
         }
 
         #endregion
@@ -72,8 +74,6 @@ namespace CampusSnapshots.Controllers
         public async Task<IActionResult> Detail(int id)
         {
             var post = _posts.GetById(id);
-            var userId = userManager.GetUserId(User);
-            var user = await userManager.FindByIdAsync(userId);
 
             var viewModel = new PostDetailViewModel()
             {
@@ -86,8 +86,7 @@ namespace CampusSnapshots.Controllers
                 Status = post.Status,
                 Comments = _posts.GetAllCommentsByPostId(post.Id),
                 Campus = post.Campus,
-                User = user
-                //Comments = post.Comments?.Where(p => p.Post.Id == id)
+                AuthorUsername = userService.GetById(post.User.Id).UserName
             };
 
             return View(viewModel);

@@ -20,6 +20,6 @@ namespace CampusSnapshots.ViewModels
         public Campus Campus                     { get; set; }
         public Comment Comment                   { get; set; } //used for adding new comment.
 
-        public virtual ApplicationUser User      { get; set; }
+        public string AuthorUsername             { get; set; }
     }
 }
