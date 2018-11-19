@@ -6,8 +6,11 @@
         <h2 class="text-muted">
             Details: 
             <span>
-                <a id="delete-post" class="btn btn-md btn-danger pull-right" role="button" asp-controller="Post" asp-action="Delete" asp-route-id="@Model.PostId">Delete Post</a>
-                <a id="edit-post" class="btn btn-md btn-info pull-right" role="button" asp-controller="Post" asp-action="Edit" asp-route-id="@Model.PostId">Edit Post</a>
+                @if (User.Identity.Name == Model.AuthorUsername || User.IsInRole("Admin"))
+                {
+                    <a id="delete-post" class="btn btn-md btn-danger pull-right" role="button" asp-controller="Post" asp-action="Delete" asp-route-id="@Model.PostId">Delete Post</a>
+                    <a id="edit-post" class="btn btn-md btn-info pull-right" role="button" asp-controller="Post" asp-action="Edit" asp-route-id="@Model.PostId">Edit Post</a>
+                }
             </span>
         </h2>
     </div>
