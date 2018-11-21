@@ -1,0 +1,110 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model CampusSnapshots.ViewModels.ProfileViewModel
+@inject UserManager<CampusSnapshots.Models.ApplicationUser> UserManager
+
+
+<div class="container" style="padding-top:15px">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#profile">Profile</a></li>
+        <li><a data-toggle="tab" href="#postHistoryTable">Post History</a></li>
+    </ul>
+
+    <div class="tab-content">
+
+        <!--Profile Tab-->
+        <div id="profile" class="tab-pane fade in active">
+            <div class="container body-content">
+                <div class="row userProfile">
+                    <div class="col-md-4">
+                        <div id="userProfileImage" style="background-image: url(@Model.ProfileImageUrl)"></div>
+                        @if (User.Identity.Name == Model.Username)
+                        {
+                            <form method="post" enctype="multipart/form-data" asp-controller="Profile" asp-action="UploadProfileImage">
+                                <div id="upload" class="form-group" style="padding-top: 9px">
+                                    <label class="btn btn-info btn-file">
+                                        Browse for Image
+                                        <input asp-for="ImageUpload" type="file" name="pic" style="display: none" />
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" id="btn-profile" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        }
+                    </div>
+                    <div class="col-md-8">
+                        <span id="userName">@Model.Username</span>
+                        @if (Model.IsAdmin)
+                        {
+                            <span class="isAdmin">Admin</span>
+                        }
+                        <span id="userEmailLabel">Name: @Model.FullName</span>
+                        <span id="userEmailLabel">Email: @Model.Email</span>
+                        <span id="userEmailLabel">Phone Number: @Model.PhoneNumber</span>
+                        <span id="userCreatedLabel">Member Since: @Model.DateJoined</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Post History Tab-->
+        <div id="postHistoryTable" class="tab-pane fade">
+            <div class="container body-content">
+                @if (!Model.Posts.Any())
+                {
+                    <h3>No Posts</h3>
+                }
+                else
+                {
+                    <div class="row" id="forumIndexContent">
+                        <table class="table table-hover" id="userIndexTable">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Id</th>
+                                    <th>Title</th>
+                                    <th>Created</th>
+                                    <th>Status</th>
+                                    <th>Type</th>
+                                    <th>Comments</th>
+                                    <th>Campus</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var post in Model.Posts)
+                                {
+                                    <tr class="userRow">
+                                        <td>
+                                            <div class="userProfilePic" style="background-image: url(@post.Url)"></div>
+                                        </td>
+                                        <td>
+                                            @post.Id
+                                        </td>
+                                        <td>
+                                            @post.Title
+                                        </td>
+                                        <td>
+                                            @post.DateCreated
+                                        </td>
+                                        <td>
+                                            @post.Status
+                                        </td>
+                                        <td>
+                                            @post.PostType
+                                        </td>
+                                        <td>
+                                            @post.Comments.Count()
+                                        </td>
+                                        <td>
+                                            @post.Campus.Name
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

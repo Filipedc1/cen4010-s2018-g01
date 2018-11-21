@@ -32,5 +32,7 @@ namespace SnapshotsData
         Comment GetCommentById(int id);
 
         bool DeleteComment(Comment comment);
+
+        IEnumerable<Post> GetAllPostsForUser(string userId);
     }
 }

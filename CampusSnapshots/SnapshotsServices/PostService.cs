@@ -32,6 +32,8 @@ namespace SnapshotsServices
         {
             return context.Posts
                 .Include(location => location.Campus)
+                .Include(p => p.Comments)
+                .Include(p => p.User)
                 .Include(p => p.Status);
         }
 
@@ -171,6 +173,13 @@ namespace SnapshotsServices
             return context.Comment
                 .Include(c => c.Post)
                 .FirstOrDefault(c => c.Id == id);
+        }
+
+        public IEnumerable<Post> GetAllPostsForUser(string userId)
+        {
+            var x = GetAll().Where(p => p.User.Id == userId);
+            return x;
+            //return GetAll().Where(p => p.User.Id == userId);
         }
 
         #endregion
