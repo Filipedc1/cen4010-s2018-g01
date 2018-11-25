@@ -33,7 +33,9 @@
                     {
                         <tr class="memberRow">
                             <td class="">
-                                <div class="userProfilePic" style="background-image: url(@user.ProfileImageUrl)"></div>
+                                <a asp-controller="Profile" asp-action="Detail" asp-route-id="@user.Id">
+                                    <div class="userProfilePic" style="background-image: url(@user.ProfileImageUrl)"></div>
+                                </a>
                             </td>
                             <td class="">@($"{user.FirstName} {user.LastName}")</td>
                             <td class="">@user.Email</td>

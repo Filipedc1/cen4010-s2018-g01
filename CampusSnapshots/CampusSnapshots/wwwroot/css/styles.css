@@ -30,6 +30,10 @@
     color: dimgray;
 }
 
+.postUsername {
+    color: dimgray;
+}
+
 /* User Profiles */
 .userProfile {
     padding: 32px 0 64px 24px;
@@ -58,5 +62,11 @@
 .userProfilePic {
     height: 50px;
     width: 50px;
+    background-size: 100%;
+}
+
+.userProfilePicForComments {
+    height: 30px;
+    width: 30px;
     background-size: 100%;
 }

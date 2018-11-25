@@ -85,16 +85,21 @@
                         <div class="panel-body">
                             <div class="col-md-3 replyAuthorContainer">
                                 <div class="postAuthorImage" style=""></div>
-
-                                <a> @comment.User.UserName</a><br />
+                                <a asp-controller="Profile" asp-action="Detail" asp-route-id="@comment.User.Id">
+                                    <div class="userProfilePicForComments" style="background-image: url(@comment.User.ProfileImageUrl)"></div>
+                                </a>
+                                <span class="postUsername">@comment.User.UserName</span><br />
                                 <span class="postDate">@comment.SendTime</span>
                             </div>
                             <div class="col-md-9 replyContentContainer">
                                 <div class="postContent">
                                     @Html.Raw(comment.Content)
-                                    <i>
-                                        <a id="delete-comment" class="far fa-trash-alt pull-right" role="button" asp-controller="Post" asp-action="DeleteComment" asp-route-id="@comment.Id"></a>
-                                    </i>
+                                    @if (comment.User.UserName == User.Identity.Name)
+                                    {
+                                        <i>
+                                            <a id="delete-comment" class="far fa-trash-alt pull-right" role="button" asp-controller="Post" asp-action="DeleteComment" asp-route-id="@comment.Id"></a>
+                                        </i>
+                                    }
                                 </div>
                             </div>
                         </div>
