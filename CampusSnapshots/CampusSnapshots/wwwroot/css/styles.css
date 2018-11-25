@@ -54,3 +54,9 @@
     color: #2569d5;
     font-size: 1.7em;
 }
+
+.userProfilePic {
+    height: 50px;
+    width: 50px;
+    background-size: 100%;
+}
