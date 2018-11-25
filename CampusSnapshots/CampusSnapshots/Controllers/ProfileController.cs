@@ -69,8 +69,6 @@ namespace CampusSnapshots.Controllers
             var user = userService.GetById(id);
             var userRoles = await userManager.GetRolesAsync(user);
 
-
-
             var viewMod = new ProfileViewModel
             {
                 Username = user.UserName,
@@ -80,7 +78,8 @@ namespace CampusSnapshots.Controllers
                 PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
                 DateJoined = user.DateJoined,
-                Posts = postService.GetAllPostsForUser(user.Id)
+                Posts = postService.GetAllPostsForUser(user.Id),
+                ProfileImageUrl = user.ProfileImageUrl
             };
 
             return View(viewMod);
@@ -96,7 +95,7 @@ namespace CampusSnapshots.Controllers
             {
                 filename = UploadImage(file);
                 string url = "/images/" + Path.GetFileName(file.FileName);
-                //await userService.SetProfileImage(userId, url);
+                await userService.SetProfileImage(userId, url);
             }
 
             return RedirectToAction("Detail", "Profile", new { id = userId });

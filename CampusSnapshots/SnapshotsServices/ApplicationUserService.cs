@@ -26,5 +26,13 @@ namespace SnapshotsServices
         {
             return GetAll().FirstOrDefault(user => user.Id == id);
         }
+
+        public async Task SetProfileImage(string id, string url)
+        {
+            var user = GetById(id);
+            user.ProfileImageUrl = url;
+            dbContext.Update(user);
+            await dbContext.SaveChangesAsync();
+        }
     }
 }

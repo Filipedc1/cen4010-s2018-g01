@@ -10,5 +10,6 @@ namespace SnapshotsData
     {
         ApplicationUser GetById(string id);
         IEnumerable<ApplicationUser> GetAll();
+        Task SetProfileImage(string id, string url);
     }
 }
